@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <container htmlTag="div" htmlClass="div" name="demo.wrapper">
+                <container htmlTag="h2" htmlClass="first" name="demo.basic.header">
+                    <block class="Magento\Framework\View\Element\Text">
+                        <arguments>
+                            <argument name="text" xsi:type="string" translate="true">
+                                YouTube
+                            </argument>
+                        </arguments>
+                    </block>
+                </container>
+                <block template="Kadoco_YouTube::youtube-60.phtml" name="youtube.basic"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

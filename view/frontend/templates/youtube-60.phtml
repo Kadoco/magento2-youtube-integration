@@ -1,0 +1,15 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Kadoco\YouTube\ViewModel\MediaListProvider $mediaListProvider */
+$mediaListProvider = \Magento\Framework\App\ObjectManager::getInstance()->create(\Kadoco\YouTube\ViewModel\MediaListProvider::class);
+$medias = $mediaListProvider->execute(60);
+?>
+<div class="youtube">
+    <?php foreach ($medias as $media): ?>
+        <div class="item" style="background-image:url('<?=$media->getImageUrl()?>')" onclick="window.open('<?=$media->getUrl()?>', '_blank');">
+            <a href="<?=$media->getUrl()?>">
+
+            </a>
+        </div>
+    <?php endforeach; ?>
+</div>

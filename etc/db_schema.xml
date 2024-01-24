@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="youtube_media" resource="default" engine="innodb" comment="YouTube media">
+        <column xsi:type="bigint" name="id" unsigned="true" nullable="false" identity="true"
+                comment="ID"/>
+        <column xsi:type="datetime" name="publishedAt" on_update="false" nullable="true"
+                comment="publishedAt"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="1024" default=""
+                comment="title"/>
+        <column xsi:type="varchar" name="description" nullable="false" length="1024" default=""
+                comment="description"/>
+        <column xsi:type="varchar" name="thumbnail" nullable="false" length="1024" default=""
+                comment="thumbnail"/>
+        <column xsi:type="varchar" name="channelTitle" nullable="false" length="1024" default=""
+                comment="channelTitle"/>
+
+        <column xsi:type="varchar" name="video_url" nullable="false" length="1024" default=""
+                comment="video_url"/>
+        <column xsi:type="varchar" name="video_id" nullable="false" length="1024" default=""
+                comment="video_id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

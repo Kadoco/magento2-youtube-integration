@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd"
+>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="import-youtube-data" xsi:type="object">Kadoco\YouTube\Console\Command\ImportData</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="youtube_listing_data_source" xsi:type="string">Kadoco\Media\Model\ResourceModel\Media\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Kadoco\Media\Model\ResourceModel\Media\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">youtube_media</argument>
+            <argument name="resourceModel" xsi:type="string">Kadoco\YouTube\Model\ResourceModel\Media</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kadoco\YouTube\Ui\Component\Media\DataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collectionFactory" xsi:type="string">Kadoco\YouTube\Model\ResourceModel\Media\CollectionFactory</argument>
+        </arguments>
+    </virtualType>
+</config>

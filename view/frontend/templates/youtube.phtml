@@ -1,0 +1,25 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Kadoco\YouTube\ViewModel\MediaListProvider $mediaListProvider */
+$mediaListProvider = \Magento\Framework\App\ObjectManager::getInstance()->create(\Kadoco\YouTube\ViewModel\MediaListProvider::class);
+$medias = $mediaListProvider->execute(4);
+/** @var \Kadoco\YouTube\Model\YouTubeConfigProvider $config */
+$config = \Magento\Framework\App\ObjectManager::getInstance()->create(\Kadoco\YouTube\Model\YouTubeConfigProvider::class);
+?>
+<div class="social-header youtube-header">
+    <div class="social-big-header youtube-big-header">
+        <?=__('Follow us in YouTube')?>
+    </div>
+    <div class="social-small-header-links">
+        <div class="social-small-header-links-text">
+            <a href="<?=$config->getYouTubeUrl()?>" target="_blank"><?=__('Se all')?></a>
+        </div>
+    </div>
+</div>
+<div class="youtube">
+    <?php foreach ($medias as $media): ?>
+        <div class="item" onclick="window.location.href='<?=$media->getUrl()?>'" style="background:black url(<?=$media->getImageUrl()?>) no-repeat;background-size: 100% auto;background-position: center;">
+
+        </div>
+    <?php endforeach; ?>
+</div>
